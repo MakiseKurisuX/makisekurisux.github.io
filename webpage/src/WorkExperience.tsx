@@ -99,12 +99,13 @@ const experiences = [
       >
         <Container
           sx={{
-            minHeight: '110vh',
-            padding: '2rem',
+            minHeight: '100vh', 
+            paddingTop: '1rem', 
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            textAlign: 'center',
           }}
         >
           <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: '#333' }}>

@@ -11,13 +11,13 @@ const InterestsSection: React.FC = () => {
     >
       <Container
         sx={{
-          minHeight: '80vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-          padding: '2rem',
+            minHeight: '100vh', 
+            paddingTop: '1rem', 
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
         }}
       >
         <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: 3, color: '#333' }}>
