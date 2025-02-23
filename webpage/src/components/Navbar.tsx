@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Box, Divider, IconButton, AppBar, Toolbar } from '@mui/material';
+import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Box, Divider, IconButton, AppBar, Toolbar, Typography } from '@mui/material';
 import { Menu, Home, Work, Folder, Interests, GitHub, LinkedIn, Email } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
@@ -19,15 +19,16 @@ const SidebarNavbar: React.FC = () => {
         boxSizing: 'border-box',
         backgroundColor: '#1E1E1E',
         color: 'white',
-        paddingTop: '2rem',
+        height: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'center', 
+        alignItems: 'flex-start',
         paddingX: '1rem',
       }}
     >
-      <List sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        {[
+      <List>
+        {[ 
           { name: 'Home', icon: <Home />, link: '/' },
           { name: 'Work', icon: <Work />, link: '/work' },
           { name: 'Projects', icon: <Folder />, link: '/projects' },
@@ -50,12 +51,12 @@ const SidebarNavbar: React.FC = () => {
               onClick={handleDrawerToggle}
             >
               <ListItemIcon sx={{ color: 'white', minWidth: '40px' }}>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.name} sx={{ textAlign: 'left' }} />
+              <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Box sx={{ textAlign: 'center', paddingBottom: '1.5rem' }}>
+      <Box sx={{ textAlign: 'center', paddingBottom: '1rem' }}>
         <Divider sx={{ backgroundColor: 'gray', marginBottom: '1rem' }} />
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
           <IconButton href="https://github.com/MakiseKurisuX" target="_blank" sx={{ color: 'white', '&:hover': { color: '#FFD700' } }}>
@@ -95,7 +96,7 @@ const SidebarNavbar: React.FC = () => {
           variant="permanent"
           sx={{
             display: { xs: 'none', md: 'block' },
-            '& .MuiDrawer-paper': { width: drawerWidth },
+            '& .MuiDrawer-paper': { width: drawerWidth, height: '100vh' },
           }}
           open
         >

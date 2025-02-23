@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Container, Typography, Avatar, Box, Grid } from '@mui/material';
+import { Container, Typography, Avatar, Box, Grid, useMediaQuery } from '@mui/material';
 import { TypeAnimation } from 'react-type-animation';
 
 const techStack = [
@@ -29,60 +29,100 @@ const techStack = [
 ];
 
 const IntroductionSection: React.FC = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-    >
-      <Container
-        sx={{
-          height: '90vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-        }}
+    const isMobile = useMediaQuery('(max-width:600px)'); // Detects mobile screens
+  
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
       >
-        <Avatar
-          src="https://images.alphacoders.com/902/thumb-1920-902852.jpg"
-          alt="Ervin Tan"
-          sx={{ width: 180, height: 180, marginBottom: 2, borderRadius: '50%', boxShadow: '0px 5px 15px rgba(0,0,0,0.2)' }}
-        />
-
-        <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-          <TypeAnimation
-            sequence={['Hello, nice to meet you! 👋', 2000, 'My name is Ervin.', 2000, 'I love eating and listening to J-Pop.', 2000, 'And I am a software engineer.', 2000]}
-            wrapper="span"
-            speed={50}
-            style={{ display: 'inline-block' }}
-            repeat={Infinity}
+        <Container
+          sx={{
+            minHeight: '100vh', 
+            paddingTop: '1rem', 
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+          }}
+        >
+          <Avatar
+            src="https://images.alphacoders.com/902/thumb-1920-902852.jpg"
+            alt="Ervin Tan"
+            sx={{
+              width: 150, // Adjusted for mobile
+              height: 150,
+              marginBottom: 2,
+              borderRadius: '50%',
+              boxShadow: '0px 5px 15px rgba(0,0,0,0.2)',
+            }}
           />
-        </Typography>
-
-        <Typography variant="body1" sx={{ marginTop: 2, maxWidth: '600px', color: 'gray', fontSize: '1.1rem', lineHeight: '1.6' }}>
-          I am currently a Computer Science student at the National University of Singapore,
-          specializing in AI and Software Engineering, and am always looking to learn more!
-        </Typography>
-        <Typography variant="body1" sx={{ marginTop: 2 }}>
-          Reach out to me at: <b>ervintan018 [at] gmail [dot] com</b>
-        </Typography>
-
-        <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 4 }}>
-          Tech Stacks I've worked with...
-        </Typography>
-
-        <Grid container spacing={1} sx={{ marginTop: 2, maxWidth: '900px', justifyContent: 'center' }}>
-          {techStack.map((tech, index) => (
-            <Grid item xs={3} sm={2} md={2} key={index}>
-              <Box component="img" src={tech.logo} alt={tech.name} title={tech.name} sx={{ width: '55px', height: '55px', objectFit: 'contain', borderRadius: '4px', transition: 'transform 0.2s ease-in-out', '&:hover': { transform: 'scale(1.1)' } }} />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </motion.div>
-  );
-};
-
-export default IntroductionSection;
+  
+          <Typography
+            variant={isMobile ? "h4" : "h2"} // Smaller font size on mobile
+            sx={{ fontWeight: 'bold' }}
+          >
+            <TypeAnimation
+              sequence={[
+                'Hello, nice to meet you! 👋', 2000,
+                'My name is Ervin.', 2000,
+                'I love eating and listening to J-Pop.', 2000,
+                'And I am a software engineer.', 2000
+              ]}
+              wrapper="span"
+              speed={50}
+              style={{ display: 'inline-block' }}
+              repeat={Infinity}
+            />
+          </Typography>
+  
+          <Typography
+            variant="body1"
+            sx={{
+              marginTop: 2,
+              maxWidth: '600px',
+              color: 'gray',
+              fontSize: isMobile ? '1rem' : '1.1rem', // Reduce font size for better readability
+              lineHeight: '1.6',
+            }}
+          >
+            I am currently a Computer Science student at the National University of Singapore,
+            specializing in AI and Software Engineering, and am always looking to learn more!
+          </Typography>
+  
+          <Typography variant="body1" sx={{ marginTop: 2 }}>
+            Reach out to me at: <b>ervintan018 [at] gmail [dot] com</b>
+          </Typography>
+  
+          <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 4 }}>
+            Tech Stacks I've worked with...
+          </Typography>
+  
+          <Grid container spacing={1} sx={{ marginTop: 2, maxWidth: '900px', justifyContent: 'center' }}>
+            {techStack.map((tech, index) => (
+              <Grid item xs={3} sm={2} md={2} key={index}>
+                <Box
+                  component="img"
+                  src={tech.logo}
+                  alt={tech.name}
+                  title={tech.name}
+                  sx={{
+                    width: isMobile ? '40px' : '55px', // Reduce logo size on mobile
+                    height: isMobile ? '40px' : '55px',
+                    objectFit: 'contain',
+                    borderRadius: '4px',
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': { transform: 'scale(1.1)' },
+                  }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </motion.div>
+    );
+  };
+  
+  export default IntroductionSection;
