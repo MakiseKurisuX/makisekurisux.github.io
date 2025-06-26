@@ -1,10 +1,20 @@
+/* Import Poppins from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Apply font globally to all elements */
+* {
+  font-family: 'Poppins', sans-serif !important;
 }
 
 code {
@@ -15,4 +25,51 @@ code {
 html, body {
   height: 100%;
   overflow-y: auto !important; /* Force scrolling */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00D4FF, #FF6B9D);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #FF6B9D, #C770F0);
+}
+
+/* Global animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure content is above the background */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Add a subtle overlay for better text readability */
+.content-overlay {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
 }

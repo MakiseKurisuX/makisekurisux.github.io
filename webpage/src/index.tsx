@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { animateScroll as scroll } from 'react-scroll';
+import './index.css';
 
 document.body.style.background = 'linear-gradient(to right, #e0eafc, #cfdef3)';
 document.body.style.color = '#333';

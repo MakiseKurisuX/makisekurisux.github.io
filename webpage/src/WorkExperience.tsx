@@ -3,10 +3,30 @@ import { motion } from 'framer-motion';
 import { Container, Typography,  Box, CardMedia } from '@mui/material';
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
 
+const MotionTimelineItem = motion(TimelineItem);
+
 const experiences = [
     {
+      company: 'GIC Pte. Ltd.',
+      role: 'Software Engineer Intern',
+      duration: 'May. 2025 - Current',
+      logo: 'https://www.gic.com.sg/uploads/2021/03/default-demo.jpg',
+      responsibilities: [
+        'Automating Key Workflows via Airflow DAGs, LLM APIs, and Retrieval Augmented Generation.',
+        'Using LLM APIs to generate data insights and automate data analysis.',
+      ],
+      techStack: [
+        'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/2560px-Microsoft_Azure_Logo.svg.png',
+        'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/d/de/AirflowLogo.png'
+      ]
+    },
+    {
       company: 'Voltade',
-      role: 'Solutions Engineer Intern',
+      role: 'Software Engineer Intern',
       duration: 'Dec. 2024 – Jan. 2025',
       logo: 'https://static.mycareersfuture.gov.sg/images/company/logos/98ad524e538368594017b76b1bbe7ce6/voltade.png',
       responsibilities: [
@@ -91,77 +111,246 @@ const experiences = [
 
   const WorkExperienceSection: React.FC = () => {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+      <Container
+        sx={{
+          minHeight: '100vh',
+          paddingTop: '4rem',
+          paddingBottom: '4rem',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          position: 'relative',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+            opacity: 0.2,
+          },
+        }}
       >
-        <Container
-          sx={{
-            minHeight: '100vh', 
-            paddingTop: '1rem', 
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-          }}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: '#333' }}>
-            Work Experience
+          <Typography 
+            variant="h3" 
+            gutterBottom 
+            sx={{ 
+              fontWeight: 'bold', 
+              color: 'white',
+              marginBottom: 4,
+              background: 'linear-gradient(45deg, #00D4FF, #FF6B9D)',
+              backgroundSize: '200% 200%',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              animation: 'gradientShift 3s ease infinite',
+            }}
+          >
+            Professional Journey
           </Typography>
-          <Timeline position="alternate">
-            {experiences.map((experience, index) => (
-              <TimelineItem key={index}>
-                <TimelineSeparator>
-                  <TimelineDot color="primary" />
-                  {index !== experiences.length - 1 && <TimelineConnector />}
-                </TimelineSeparator>
-                <TimelineContent>
-                  <Box sx={{
-                    padding: '1rem',
-                    background: 'linear-gradient(to right, #ffffff, #f1f1f1)',
-                    borderRadius: '10px',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.15)',
-                    textAlign: index % 2 === 0 ? 'left' : 'right'
-                  }}>
-                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#333' }}>
-                      {experience.role} at {experience.company}
+        </motion.div>
+        
+        <Timeline position="alternate" sx={{ maxWidth: '1200px' }}>
+          {experiences.map((experience, index) => (
+            <MotionTimelineItem
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+            >
+              <TimelineSeparator>
+                <motion.div
+                  whileHover={{ scale: 1.3 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <TimelineDot 
+                    sx={{ 
+                      background: 'linear-gradient(45deg, #00D4FF, #FF6B9D)',
+                      width: '20px',
+                      height: '20px',
+                      border: '3px solid rgba(255, 255, 255, 0.3)',
+                      boxShadow: '0 0 20px rgba(0, 212, 255, 0.5)',
+                    }} 
+                  />
+                </motion.div>
+                {index !== experiences.length - 1 && (
+                  <TimelineConnector 
+                    sx={{ 
+                      background: 'linear-gradient(45deg, #00D4FF, #FF6B9D)',
+                      width: '3px',
+                    }} 
+                  />
+                )}
+              </TimelineSeparator>
+              <TimelineContent>
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.02,
+                    rotateY: index % 2 === 0 ? 5 : -5,
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <Box
+                    sx={{
+                      padding: '2rem',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      backdropFilter: 'blur(20px)',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                      textAlign: index % 2 === 0 ? 'left' : 'right',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '4px',
+                        background: 'linear-gradient(90deg, #00D4FF, #FF6B9D, #C770F0)',
+                        backgroundSize: '200% 100%',
+                        animation: 'gradientShift 3s ease infinite',
+                      },
+                    }}
+                  >
+                    <Typography 
+                      variant="h5" 
+                      sx={{ 
+                        fontWeight: 'bold', 
+                        color: 'white',
+                        marginBottom: 1,
+                      }}
+                    >
+                      {experience.role}
                     </Typography>
-                    <Typography variant="body2" color="gray" sx={{ marginBottom: '0.5rem' }}>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        color: '#00D4FF',
+                        fontWeight: '600',
+                        marginBottom: 1,
+                      }}
+                    >
+                      {experience.company}
+                    </Typography>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        color: 'rgba(255, 255, 255, 0.7)', 
+                        marginBottom: 2,
+                        fontSize: '1rem',
+                      }}
+                    >
                       {experience.duration}
                     </Typography>
-                    <ul style={{ margin: 0, paddingLeft: '1rem' }}>
+                    <Box 
+                      component="ul" 
+                      sx={{ 
+                        margin: 0, 
+                        paddingLeft: '1.5rem',
+                        listStyle: 'none',
+                        '& li': {
+                          position: 'relative',
+                          marginBottom: '0.5rem',
+                          '&::before': {
+                            content: '"▶"',
+                            position: 'absolute',
+                            left: '-1.5rem',
+                            color: '#00D4FF',
+                            fontSize: '0.8rem',
+                          },
+                        },
+                      }}
+                    >
                       {experience.responsibilities.map((responsibility, idx) => (
-                        <li key={idx}>
-                          <Typography variant="body2" color="#444">{responsibility}</Typography>
-                        </li>
+                        <motion.li
+                          key={idx}
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        >
+                          <Typography 
+                            variant="body2" 
+                            sx={{ 
+                              color: 'rgba(255, 255, 255, 0.9)',
+                              lineHeight: 1.6,
+                              fontSize: '0.95rem',
+                            }}
+                          >
+                            {responsibility}
+                          </Typography>
+                        </motion.li>
                       ))}
-                    </ul>
-                    <Box sx={{
-                      display: 'flex',
-                      gap: 2,
-                      marginTop: 2,
-                      justifyContent: index % 2 === 0 ? 'flex-start' : 'flex-end'
-                    }}>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        gap: 2,
+                        marginTop: 3,
+                        justifyContent: index % 2 === 0 ? 'flex-start' : 'flex-end',
+                        flexWrap: 'wrap',
+                      }}
+                    >
                       {experience.techStack.map((logo, i) => (
-                        <CardMedia
+                        <motion.div
                           key={i}
-                          component="img"
-                          sx={{ width: 40, height: 40, objectFit: 'contain' }}
-                          image={logo}
-                          alt="Tech Logo"
-                        />
+                          whileHover={{ scale: 1.2, rotateY: 360 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Box
+                            sx={{
+                              width: 50,
+                              height: 50,
+                              borderRadius: '12px',
+                              background: 'rgba(255, 255, 255, 0.1)',
+                              backdropFilter: 'blur(10px)',
+                              border: '1px solid rgba(255, 255, 255, 0.2)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              padding: '8px',
+                              transition: 'all 0.3s ease',
+                              '&:hover': {
+                                background: 'rgba(0, 212, 255, 0.2)',
+                                border: '1px solid rgba(0, 212, 255, 0.4)',
+                                boxShadow: '0 4px 15px rgba(0, 212, 255, 0.3)',
+                              },
+                            }}
+                          >
+                            <CardMedia
+                              component="img"
+                              sx={{ 
+                                width: '100%', 
+                                height: '100%', 
+                                objectFit: 'contain',
+                                filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))',
+                              }}
+                              image={logo}
+                              alt="Tech Logo"
+                            />
+                          </Box>
+                        </motion.div>
                       ))}
                     </Box>
                   </Box>
-                </TimelineContent>
-              </TimelineItem>
-            ))}
-          </Timeline>
-        </Container>
-      </motion.div>
+                </motion.div>
+              </TimelineContent>
+            </MotionTimelineItem>
+          ))}
+        </Timeline>
+      </Container>
     );
   };
   

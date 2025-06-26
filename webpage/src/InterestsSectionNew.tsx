@@ -20,6 +20,7 @@ const InterestsSection: React.FC = () => {
             justifyContent: 'center',
             alignItems: 'center',
             textAlign: 'center',
+            background: 'linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(199, 112, 240, 0.1) 100%)',
             position: 'relative',
         }}
       >
