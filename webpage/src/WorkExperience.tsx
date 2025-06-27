@@ -31,6 +31,7 @@ const experiences = [
       logo: 'https://static.mycareersfuture.gov.sg/images/company/logos/98ad524e538368594017b76b1bbe7ce6/voltade.png',
       responsibilities: [
         'Developed a solution for finding the leads of Small - Medium Enterprises using Google Custom Search, DuckDuckGo and OpenAI’s API models.',
+        'Automated lead discovery process by building and deploying an internal application that enables diect, categorical searching of potential SME clients.',
       ],
       techStack: [
         'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
