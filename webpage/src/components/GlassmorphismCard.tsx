@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Box, BoxProps } from '@mui/material';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface GlassProps extends BoxProps {
   children: ReactNode;

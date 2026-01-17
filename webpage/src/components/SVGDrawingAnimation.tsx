@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Box } from '@mui/material';
-import akameSvg from '../images/akame.svg';
 
 interface SVGDrawingAnimationProps {
   onComplete?: () => void;

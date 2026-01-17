@@ -8,7 +8,6 @@ import SVGDrawingAnimation from './components/SVGDrawingAnimation';
 import ScrollProgressIndicator from './components/ScrollProgressIndicator';
 import FloatingElements from './components/FloatingElements';
 import NeonDivider from './components/NeonDivider';
-import ParticleExplosion from './components/ParticleExplosion';
 import IntroductionSection from './IntroductionSection';
 import WorkExperienceSection from './WorkExperience';
 import ProjectsSection from './ProjectSection';
