@@ -5,40 +5,56 @@ import { TypeAnimation } from 'react-type-animation';
 import { Download, ArrowDownward } from '@mui/icons-material';
 
 const techStackCategories = {
-  'Programming Languages': [
+  'Languages': [
     { name: 'Python', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg' },
+    { name: 'Java', logo: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
+    { name: 'C', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png' },
+    { name: 'C++', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg' },
+    { name: 'Go', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg' },
+    { name: 'SQL (Postgres)', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg' },
     { name: 'JavaScript', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png' },
     { name: 'TypeScript', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg' },
-    { name: 'Java', logo: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
-    { name: 'C++', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg' },
-    { name: 'SQL', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg' },
+    { name: 'HTML/CSS', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg' },
   ],
-  'Frameworks & Libraries': [
+  'Technologies / Frameworks': [
+    { name: 'AWS', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
+    { name: 'Terraform', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Terraform_Logo.svg' },
+    { name: 'Docker', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg' },
+    { name: 'Datadog', logo: 'https://upload.wikimedia.org/wikipedia/en/7/7e/Datadog_logo.svg' },
+    { name: 'Redis', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Logo-redis.svg/1280px-Logo-redis.svg.png' },
     { name: 'React', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
     { name: 'Node.js', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
-    { name: 'Flask', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg' },
-    { name: 'Django', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg' },
-    { name: 'GraphQL', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg' },
+    { name: 'FastAPI', logo: 'https://cdn.worldvectorlogo.com/logos/fastapi.svg' },
+    { name: 'Streamlit', logo: 'https://streamlit.io/images/brand/streamlit-mark-color.png' },
+    { name: 'Airflow', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/de/AirflowLogo.png' },
+    { name: 'Linux', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg' },
   ],
-  'Data Science & ML': [
+  'Libraries': [
     { name: 'pandas', logo: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg' },
     { name: 'NumPy', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg' },
-    { name: 'Scikit-Learn', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg' },
     { name: 'Matplotlib', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg' },
-    { name: 'Seaborn', logo: 'https://seaborn.pydata.org/_images/logo-mark-lightbg.svg' },
-    { name: 'PyTorch', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png' },
-  ],
-  'Tools & Platforms': [
-    { name: 'Git', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg' },
-    { name: 'Docker', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg' },
-    { name: 'VS Code', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg' },
+    { name: 'Plotly', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/Plotly-logo.png' },
+    { name: 'Playwright', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Playwright_Logo.svg/960px-Playwright_Logo.svg.png' }, 
+    { name: 'BeautifulSoup', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/PyPI-Logo-notext.svg/3840px-PyPI-Logo-notext.svg.png' },
     { name: 'Selenium', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png' },
-    { name: 'Anaconda', logo: 'https://upload.wikimedia.org/wikipedia/en/c/cd/Anaconda_Logo.png' },
+    { name: 'Twilio', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Twilio-logo-red.svg/1280px-Twilio-logo-red.svg.png' },
+    { name: 'OAuth 2.0', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Oauth_logo.svg' },
+  ],
+  'Artificial Intelligence': [
+    { name: 'LangChain', logo: 'https://avatars.githubusercontent.com/u/126733545?s=200&v=4' },
+    { name: 'LangGraph', logo: 'https://avatars.githubusercontent.com/u/126733545?s=200&v=4' },
+    { name: 'RAG', logo: 'https://cdn-icons-png.flaticon.com/512/2920/2920349.png' },
+    { name: 'OpenSearch', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/OpenSearch_S_logo.svg/2048px-OpenSearch_S_logo.svg.png' },
+    { name: 'LLMs', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg' },
+    { name: 'Hugging Face', logo: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg' },
+    { name: 'NLP', logo: 'https://cdn-icons-png.flaticon.com/512/3655/3655512.png' },
+    { name: 'PyTorch', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png' },
+    { name: 'Scikit-learn', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg' },
   ]
 };
 
 const IntroductionSection: React.FC = () => {
-    const isMobile = useMediaQuery('(max-width:600px)'); // Detects mobile screens
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     const scrollToNextSection = () => {
       const workSection = document.querySelector('#work');

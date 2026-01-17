@@ -1,27 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Container, Typography,  Box, CardMedia } from '@mui/material';
+import { Container, Typography,  Box, CardMedia, useMediaQuery } from '@mui/material';
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
+import GlassmorphismCard from './components/GlassmorphismCard';
 
 const MotionTimelineItem = motion(TimelineItem);
 
 const experiences = [
     {
+      company: 'GovTech Singapore',
+      role: 'Software Engineer Intern',
+      duration: 'Jan. 2026 - Current',
+      logo: 'https://opengovasia.com/wp-content/uploads/2025/07/GovTechSg-True-Inline-Logo-3-Blue.png',
+      responsibilities: [
+        'Engineered an application integrating Singpass OpenID Connect (OIDC) to automate user identity extraction.',
+        'Traced authentication events and validated OIDC token exchanges using Datadog and Amazon CloudWatch.',
+      ],
+      techStack: [
+        'https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/0/04/Terraform_Logo.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/d/d2/Oauth_logo.svg'
+      ]
+    },
+    {
       company: 'GIC Pte. Ltd.',
       role: 'Software Engineer Intern',
-      duration: 'May. 2025 - Current',
+      duration: 'May. 2025 - Dec. 2025',
       logo: 'https://www.gic.com.sg/uploads/2021/03/default-demo.jpg',
       responsibilities: [
-        'Automating Key Workflows via Airflow DAGs, LLM APIs, and Retrieval Augmented Generation.',
-        'Using LLM APIs to generate data insights and automate data analysis.',
+        'Architected an autonomous agent platform using LangGraph and LangChain to power multi-step, multi-tool LLM research pipelines.',
+        'Orchestrated Apache Airflow DAGs integrated with RAG pipelines and LLM APIs, automating portfolio analysis and report generation.',
+        'Optimized RAG retrieval accuracy and output reliability by evaluating and implementing advanced chunking strategies and embedding models.',
+        'Reduced workflow runtime by 75% by refactoring synchronous code into asynchronous Python, accelerating insight delivery for portfolio teams.',
       ],
       techStack: [
         'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
-        'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
-        'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/d/de/AirflowLogo.png',
+        'https://avatars.githubusercontent.com/u/126733545?s=200&v=4',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/2560px-Microsoft_Azure_Logo.svg.png',
-        'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg',
-        'https://upload.wikimedia.org/wikipedia/commons/d/de/AirflowLogo.png'
+        'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg'
       ]
     },
     {
@@ -30,8 +49,8 @@ const experiences = [
       duration: 'Dec. 2024 – Jan. 2025',
       logo: 'https://static.mycareersfuture.gov.sg/images/company/logos/98ad524e538368594017b76b1bbe7ce6/voltade.png',
       responsibilities: [
-        'Developed a solution for finding the leads of Small - Medium Enterprises using Google Custom Search, DuckDuckGo and OpenAI’s API models.',
-        'Automated lead discovery process by building and deploying an internal application that enables diect, categorical searching of potential SME clients.',
+        'Generated 1,500+ business leads by engineering a discovery engine utilizing Google Custom Search, LLM APIs, and RAG.',
+        'Developed and deployed an internal search application to automate the categorization and retrieval of potential SME clients.',
       ],
       techStack: [
         'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
@@ -96,9 +115,9 @@ const experiences = [
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Singtel_logo.svg/2560px-Singtel_logo.svg.png',
       responsibilities: [
         'Awarded Singtel Cyber Security Cadet Scholarship.',
-        'Built complex database queries using ArangoDB/MongoDB and integrated them with GraphQL.',
-        'Developed dashboards using React, TypeScript, and D3.js for data visualization.',
-        'Built pipelines for data transfer using PySpark.',
+        'Engineered efficient data pipelines using Apache Spark to optimize the processing of 10M+ records.',
+        'Designed and implemented interactive data visualization dashboards using D3.js, React, and TypeScript to improve data accessibility.',
+        'Developed complex GraphQL schemas to extract and aggregate data from ArangoDB and MongoDB.',
       ],
       techStack: [
         'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
@@ -111,6 +130,8 @@ const experiences = [
   ];
 
   const WorkExperienceSection: React.FC = () => {
+    const isMobile = useMediaQuery('(max-width:768px)');
+
     return (
       <Container
         sx={{
@@ -160,11 +181,11 @@ const experiences = [
           </Typography>
         </motion.div>
         
-        <Timeline position="alternate" sx={{ maxWidth: '1200px' }}>
+        <Timeline position={isMobile ? "right" : "alternate"} sx={{ maxWidth: '1200px', padding: 0 }}>
           {experiences.map((experience, index) => (
             <MotionTimelineItem
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              initial={{ opacity: 0, x: isMobile ? 50 : (index % 2 === 0 ? -100 : 100) }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -193,38 +214,25 @@ const experiences = [
                   />
                 )}
               </TimelineSeparator>
-              <TimelineContent>
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.02,
-                    rotateY: index % 2 === 0 ? 5 : -5,
+              <TimelineContent sx={{ py: '12px', px: 2 }}>
+                <GlassmorphismCard
+                  sx={{
+                    textAlign: isMobile ? 'left' : (index % 2 === 0 ? 'left' : 'right'),
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '4px',
+                      background: 'linear-gradient(90deg, #00D4FF, #FF6B9D, #C770F0)',
+                      backgroundSize: '200% 100%',
+                      animation: 'gradientShift 3s ease infinite',
+                    },
                   }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <Box
-                    sx={{
-                      padding: '2rem',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      backdropFilter: 'blur(20px)',
-                      borderRadius: '20px',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                      textAlign: index % 2 === 0 ? 'left' : 'right',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: '4px',
-                        background: 'linear-gradient(90deg, #00D4FF, #FF6B9D, #C770F0)',
-                        backgroundSize: '200% 100%',
-                        animation: 'gradientShift 3s ease infinite',
-                      },
-                    }}
-                  >
                     <Typography 
                       variant="h5" 
                       sx={{ 
@@ -300,7 +308,7 @@ const experiences = [
                         display: 'flex',
                         gap: 2,
                         marginTop: 3,
-                        justifyContent: index % 2 === 0 ? 'flex-start' : 'flex-end',
+                        justifyContent: isMobile ? 'flex-start' : (index % 2 === 0 ? 'flex-start' : 'flex-end'),
                         flexWrap: 'wrap',
                       }}
                     >
@@ -315,18 +323,18 @@ const experiences = [
                               width: 50,
                               height: 50,
                               borderRadius: '12px',
-                              background: 'rgba(255, 255, 255, 0.1)',
+                              background: 'rgba(255, 255, 255, 0.4)',
                               backdropFilter: 'blur(10px)',
-                              border: '1px solid rgba(255, 255, 255, 0.2)',
+                              border: '1px solid rgba(255, 255, 255, 0.6)',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               padding: '8px',
                               transition: 'all 0.3s ease',
                               '&:hover': {
-                                background: 'rgba(0, 212, 255, 0.2)',
-                                border: '1px solid rgba(0, 212, 255, 0.4)',
-                                boxShadow: '0 4px 15px rgba(0, 212, 255, 0.3)',
+                                background: 'rgba(0, 212, 255, 0.3)',
+                                border: '1px solid rgba(0, 212, 255, 0.6)',
+                                boxShadow: '0 4px 15px rgba(0, 212, 255, 0.4)',
                               },
                             }}
                           >
@@ -345,8 +353,7 @@ const experiences = [
                         </motion.div>
                       ))}
                     </Box>
-                  </Box>
-                </motion.div>
+                </GlassmorphismCard>
               </TimelineContent>
             </MotionTimelineItem>
           ))}
